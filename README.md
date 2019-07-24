@@ -3,7 +3,7 @@ Open Source voting platform, by the Center for Election Science.
 
 Features:
 - Easy social sign on
-- Vote on each candidate with 0-10 rating (rendered as stars, with half ratings)
+- Vote on each candidate with 0-9 rating (rendered as stars, with half ratings)
 - Results page *can* show the results of your election in multiple formats, such as Score, Approval, IRV, RRV and more.
 
 Goals:
