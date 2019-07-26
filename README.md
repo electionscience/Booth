@@ -21,6 +21,38 @@ What Booth is not:
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
+Browse the GraphQL schema for anonymous users: https://lucasconstantino.github.io/graphiql-online/
+
+You can login manually (a little arduous, sorry):
+
+```bash
+$ http POST https://fsargent.auth0.com/oauth/token grant_type=http://auth0.com/oauth/grant-type/password-realm client_id=1K4iRoKoy6GkQ6XXJxw3cdw8h4RIFi34 client_secret=DmtM7UZamFXpo9GXfCcMqoju0H5py2IHKOc2NRJSTRE0JCz1Guep_IDwkt1vvmWU username=boothUser@example.com password=boothUser@example.com realm=BoothUserDB-Dev
+```
+and then copy the id_token into the Authorization Header.
+
+```
+http POST https://ces-voting.herokuapp.com/v1/graphql Authorization:"Bearer <<AUTH_TOKEN>>" query={poll{name}}
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Type: application/json; charset=utf-8
+Date: Fri, 26 Jul 2019 22:54:24 GMT
+Server: Warp/3.2.27
+Transfer-Encoding: chunked
+Via: 1.1 vegur
+X-Request-Id: 719c692b-b47e-497b-a897-a71fed5b57a5
+
+{
+    "data": {
+        "poll": [
+            {
+                "name": "President 2020"
+            }
+        ]
+    }
+}
+```
+Client can also use something like apollo-client to make this super easy.
+
 ### Installing
 
 A step by step series of examples that tell you how to get a development env running
