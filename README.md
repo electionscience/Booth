@@ -21,7 +21,9 @@ What Booth is not:
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-Browse the GraphQL schema for anonymous users: https://lucasconstantino.github.io/graphiql-online/
+Browse the GraphQL schema for anonymous users: 
+Browser: https://lucasconstantino.github.io/graphiql-online/
+then change the endpoint to https://ces-voting.herokuapp.com/v1/graphql 
 
 You can login manually (a little arduous, sorry):
 
