@@ -24,9 +24,13 @@ class LandingPage extends Component {
           <div className="headerWrapper">
             <div className="headerDescription">
               {isAuthenticated() && (
-                <Link to="/home">Realtime React Todo App Demo</Link>
+                <Link to="/home">
+                  Booth, Voting by the Center for Election Science
+                </Link>
               )}
-              {!isAuthenticated() && <span>Realtime React Todo App Demo</span>}
+              {!isAuthenticated() && (
+                <span>Booth, Voting by the Center for Election Science</span>
+              )}
             </div>
             <div className="loginBtn">
               {!isAuthenticated() && (
