@@ -17,23 +17,36 @@ What Booth is not:
 - A "demo" or research project - Booth should be high quality, and reliable product.
 - A substitute for paper ballots where the chance of [APT](https://en.wikipedia.org/wiki/Advanced_persistent_threat) attacks is high.
 
+### Installing
+
+Clone this repo.
+
+Ensure you have nodejs+yarn installed.
+
+```bash
+yarn # install packages
+yarn start # get going
+```
+
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+You can explore the app's backend GraphQL schema by visiting https://lucasconstantino.github.io/graphiql-online/, then changing the endpoint to `https://ces-voting.herokuapp.com/v1/graphql`.
 
-Browse the GraphQL schema for anonymous users: 
-Browser: https://lucasconstantino.github.io/graphiql-online/
-then change the endpoint to https://ces-voting.herokuapp.com/v1/graphql 
+You can login manually to the app in your local environment via the following steps:
 
-You can login manually (a little arduous, sorry):
-
+1. [Install](https://httpie.org/doc#installation) [HTTPie](https://httpie.org) if you don't have it already.
+1. Run the following command:
 ```bash
 $ http POST https://fsargent.auth0.com/oauth/token grant_type=http://auth0.com/oauth/grant-type/password-realm client_id=1K4iRoKoy6GkQ6XXJxw3cdw8h4RIFi34 client_secret=DmtM7UZamFXpo9GXfCcMqoju0H5py2IHKOc2NRJSTRE0JCz1Guep_IDwkt1vvmWU username=boothUser@example.com password=boothUser@example.com realm=BoothUserDB-Dev
 ```
-and then copy the id_token into the Authorization Header.
+This should return a payload which includes an `id_token`. Copy it for the next step.
 
-```
+1. Add the `id_token` into the Authorization Header where you see `<<AUTH_TOKEN>>` below, then issue this command:
+```bash
 http POST https://ces-voting.herokuapp.com/v1/graphql Authorization:"Bearer <<AUTH_TOKEN>>" query={poll{name}}
+```
+You should get a response that looks something like the following:
+```
 HTTP/1.1 200 OK
 Connection: keep-alive
 Content-Type: application/json; charset=utf-8
@@ -53,18 +66,8 @@ X-Request-Id: 719c692b-b47e-497b-a897-a71fed5b57a5
     }
 }
 ```
-Client can also use something like apollo-client to make this super easy.
 
-### Installing
-
-A step by step series of examples that tell you how to get a development env running
-
-Ensure you have nodejs+yarn installed.
-
-```
-yarn # install packages
-yarn start # get going
-```
+Client can also use something like [apollo-client](https://www.apollographql.com/docs/react/) to make this super easy.
 
 ## Running the tests
 
@@ -90,7 +93,7 @@ Please read [code-of-conduct.md](https://github.com/electionscience/Booth/blob/m
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
 
 ## Authors
 
