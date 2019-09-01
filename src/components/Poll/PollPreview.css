@@ -1,0 +1,13 @@
+.labelContent {
+  padding: 10px;
+  margin-bottom: 10px;
+  color: #777;
+  width: calc(100% - 128px);
+  align-items: center;
+}
+
+@media (max-width: 991px) {
+  .labelContent {
+    display: block;
+  }
+}
