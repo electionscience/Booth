@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Subscription } from "react-apollo";
 import gql from "graphql-tag";
+import "./OnlineUsers.css";
 
 const SUBSCRIPTION_ONLINE_USERS = gql`
   subscription {

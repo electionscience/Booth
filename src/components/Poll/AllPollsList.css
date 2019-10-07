@@ -1,0 +1,20 @@
+.allPollsListwrapper {
+  border-top: 1px solid #e6e6e6;
+  -webkit-box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+}
+.allPollsListwrapper ul {
+  -webkit-padding-start: 0px;
+  -moz-padding-start: 0px;
+  margin-bottom: 0;
+}
+.allPollsListwrapper ul li {
+  list-style-type: none;
+  display: flex;
+  font-size: 14px;
+  align-items: center;
+  border-bottom: 1px solid #ededed;
+  background-color: #fff;
+  position: relative;
+}

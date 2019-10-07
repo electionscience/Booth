@@ -2,14 +2,12 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import moment from "moment";
 import gql from "graphql-tag";
-import "../../styles/App.css";
-import TodoPublicWrapper from "../Todo/TodoPublicWrapper";
-import TodoPrivateWrapper from "../Todo/TodoPrivateWrapper";
-import OnlineUsers from "../OnlineUsers/OnlineUsers";
+import "./Home.css";
 import { Navbar, Button } from "react-bootstrap";
+import AllPollsList from "../Poll/AllPollsList";
 import auth from "../Auth/Auth";
 
-class App extends Component {
+class Home extends Component {
   constructor() {
     super();
     this.state = { session: false };
@@ -53,11 +51,6 @@ class App extends Component {
     const { renewSession } = auth;
 
     if (localStorage.getItem("isLoggedIn") === "true") {
-      // eslint-disable-next-line
-      const lastSeenMutation = setInterval(
-        this.updateLastSeen.bind(this),
-        5000
-      );
       renewSession().then(data => {
         this.setState({ session: true });
       });
@@ -75,7 +68,7 @@ class App extends Component {
         <Navbar fluid className="removeMarBottom">
           <Navbar.Header className="navheader">
             <Navbar.Brand className="navBrand">
-              React Apollo Todo App
+              Booth: a polling app
             </Navbar.Brand>
             {!isAuthenticated() && (
               <Button
@@ -104,48 +97,24 @@ class App extends Component {
             <div>
               <div className="col-md-6 col-sm-12">
                 <div className="wd95 addPaddTopBottom">
-                  <div className="sectionHeader">Personal todos</div>
-                  <TodoPrivateWrapper
-                    client={this.props.client}
+                  <div className="sectionHeader">All Polls</div>
+                  <AllPollsList
                     userId={auth.getSub()}
-                  />
-                </div>
-              </div>
-              <div className="col-xs-12 col-md-6 col-sm-12 grayBgColor todoMainWrapper commonBorRight">
-                <div className="wd95 addPaddTopBottom">
-                  <div className="sectionHeader">Public todos</div>
-                  <TodoPublicWrapper
                     client={this.props.client}
-                    userId={auth.getSub()}
                   />
                 </div>
               </div>
             </div>
           </div>
-          <div className="col-xs-12 col-lg-3 col-md-12 col-sm-12 noPadd">
-            <OnlineUsers />
-          </div>
-        </div>
-        <div className="footerWrapper">
-          <span className="footerLinkPadd">
-            <a
-              href="https://github.com/electionscience/booth"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              GitHub
-              <i className="fa fa-angle-double-right" />
-            </a>
-          </span>
         </div>
       </div>
     );
   }
 }
 
-App.propTypes = {
+Home.propTypes = {
   auth: PropTypes.object,
   isAuthenticated: PropTypes.bool
 };
 
-export default App;
+export default Home;
