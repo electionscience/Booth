@@ -20,6 +20,7 @@ Open Source voting platform, by the Center for Election Science.
 - A forum for voting science debate. Booth is a platform to explore, not to argue.
 - A "demo" or research project - Booth should be high quality, and reliable product.
 - A substitute for paper ballots where the chance of APT attacks is high.
+- A substitute for paper ballots where the chance of [APT](https://en.wikipedia.org/wiki/Advanced_persistent_threat) attacks is high.
 
 ## Built with
 
