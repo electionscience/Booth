@@ -1,40 +1,28 @@
-# create-svelte
+# Booth
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+Open Source voting platform, by the Center for Election Science.
 
-## Creating a project
+## Features
 
-If you're seeing this, you've probably already done this step. Congrats!
+- Easy social sign on
+- Vote on each candidate with 0-9 rating (rendered as stars, with half ratings)
+- Results page can show the results of your election in multiple formats, such as Score, Approval, IRV, RRV and more.
 
-```bash
-# create a new project in the current directory
-npm init svelte@next
+## Goals
 
-# create a new project in my-app
-npm init svelte@next my-app
-```
+- Demonstrate the impact of voting methods
+- Clear and effective user experience
+- Reliable and secure results
+- Allow for both multi-winner and single winner elections
 
-> Note: the `@next` is temporary
+## What Booth is not
 
-## Developing
+- A forum for voting science debate. Booth is a platform to explore, not to argue.
+- A "demo" or research project - Booth should be high quality, and reliable product.
+- A substitute for paper ballots where the chance of APT attacks is high.
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+## Built with
 
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+- Typescript
+- SvelteKit
+- Supabase

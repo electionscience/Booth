@@ -18,7 +18,7 @@
 	function addQuestion() {
 		let newQuestion = {
 			text: 'Question Text',
-			options: ['Option 1', 'Option 2', 'Option 3']
+			options: ['Option 1']
 		};
 		poll.questions = [...poll.questions, newQuestion];
 		console.log(poll);
