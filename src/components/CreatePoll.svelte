@@ -42,36 +42,32 @@
 
 <form on:submit|preventDefault={handleSubmit}>
 	<article>
-		<input type="text" placeholder="Poll Title" bind:value={poll.title} />
-		<hr />
+	<input type="text" placeholder="Poll Title" bind:value={poll.title} />
 
-		{#each poll.questions as question, question_index}
-			<div class="grid">
+	{#each poll.questions as question, question_index}
+	<footer>
+
 				<input type="text" placeholder="Question to be asked" bind:value={question.text} />
-			</div>
 			{#each question.options as option, option_index}
 				<input type="text" placeholder="Candidate Name or Option" bind:value={option} />
-				
 			{/each}
-
-			<button class="addRemoveButton secondary" on:click={() => addOption(question_index)}
-				>Add Option</button
-			>
-			<button
-				class="addRemoveButton contrast outline"
-				on:click={() => removeOption(question_index, question.options[-1])}>Remove Option</button
-			>
-		<hr />
-
-		{/each}
-
+				<button class="addRemoveButton secondary" on:click={() => addOption(question_index)}
+					>Add Option</button
+				>
+				<button
+					class="addRemoveButton contrast outline"
+					on:click={() => removeOption(question_index, question.options[-1])}>Remove Option</button
+				><button class="addRemoveButton outline contrast" on:click={() => removeQuestion(question_index)}
+					>Remove Question</button
+				>
+			</footer>
+	{/each}
+	<footer>
 		<button class="addRemoveButton secondary" on:click={() => addQuestion()}>Add Question</button>
-		<button class="addRemoveButton outline contrast" on:click={() => removeQuestion(question_index)}
-			>Remove Question</button
-		>
-	</article>
+		<button type="submit">Submit</button>
 
-	<button type="submit">Submit</button>
+	</footer>
+
 </form>
 
 <style>
