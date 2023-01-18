@@ -24,7 +24,7 @@
     }
   }
 </script>
-
+<article>
 <form use:getPolls class="form-widget">
   {#if !loading}
     <div>
@@ -38,3 +38,4 @@
     </div>
   {/if}
 </form>
+</article>

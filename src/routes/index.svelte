@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import PollForm from '../components/PollForm.svelte';
 </script>
 
