@@ -2,7 +2,6 @@
   import { supabase } from '$lib/supabaseClient'
   import { invalidate } from '$app/navigation'
   import { onMount } from 'svelte'
-  import './styles.css'
 
   onMount(() => {
     const {
@@ -17,6 +16,15 @@
   })
 </script>
 
-<div class="container" style="padding: 50px 0 100px 0">
-  <slot />
-</div>
+<nav class="container-fluid">
+  <ul>
+  <li><a href="./"><strong>approval.vote</strong></a></li>
+  </ul>
+  <ul>
+    <li><a href="/create"><button> Create Poll </button></a></li>
+  </ul>
+</nav>
+<main class="container">
+  
+	<slot />
+</main>
