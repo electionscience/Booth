@@ -1,5 +1,5 @@
 <script>
-	import PollForm from '../../components/PollForm.svelte';
+	import PollForm from '$components/PollForm.svelte';
 </script>
 
 <main class="container">

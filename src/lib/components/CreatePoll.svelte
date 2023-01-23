@@ -1,4 +1,12 @@
-<script>
+<script lang="ts">
+  import type { AuthSession } from '@supabase/supabase-js'
+  import { supabase } from '$lib/supabaseClient'
+
+  export let session: AuthSession
+
+  let loading = false
+
+
 	let poll = {
 		title: '',
 		questions: [
@@ -21,7 +29,6 @@
 			options: ['']
 		};
 		poll.questions = [...poll.questions, newQuestion];
-		console.log(poll);
 	}
 
 	function removeOption(question_index, option_index) {
@@ -36,11 +43,35 @@
 
 	function handleSubmit(event) {
 		event.preventDefault();
-		console.log(poll);
 	}
+
+	async function createPoll() {
+    try {
+      loading = true
+      const { user } = session
+
+      const updates = {
+        id: user.id,
+        username,
+        website,
+        avatar_url: avatarUrl,
+        updated_at: new Date(),
+      }
+
+      let { error } = await supabase.from('profiles').upsert(updates)
+
+      if (error) throw error
+    } catch (error) {
+      if (error instanceof Error) {
+        alert(error.message)
+      }
+    } finally {
+      loading = false
+    }
+  }
 </script>
 
-<form on:submit|preventDefault={handleSubmit}>
+<form on:submit|preventDefault={createPoll}>
 	<article>
 	<input type="text" placeholder="Poll Title" bind:value={poll.title} />
 

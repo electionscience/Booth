@@ -1,5 +1,5 @@
 <script>
-	import CreatePoll from '../../components/CreatePoll.svelte';
+	import CreatePoll from '$lib/components/CreatePoll.svelte';
 </script>
 
 <main>

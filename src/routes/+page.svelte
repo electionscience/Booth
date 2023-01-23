@@ -1,8 +1,8 @@
 <script lang="ts">
-	import PollList from '../components/PollList.svelte';
+	import PollList from '$lib/components/PollList.svelte';
 	import { page } from '$app/stores'
-  import Account from './Account.svelte'
-  import Auth from './Auth.svelte'
+  import Account from '$lib/components/Account.svelte'
+  import Auth from '$lib/components/Auth.svelte'
 </script>
 
 <svelte:head>
