@@ -23,6 +23,8 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@auth/core": "^0.3.0",
+		"@auth/sveltekit": "^0.2.0",
 		"@picocss/pico": "^1.5.6",
 		"@prisma/client": "^4.8.1",
 		"@supabase/auth-helpers-sveltekit": "^0.8.3",

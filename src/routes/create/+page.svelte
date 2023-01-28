@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { enhance } from '$app/forms';
+
 	type Poll = {
 		title: string;
 		questions: Question[];
@@ -50,15 +52,15 @@
 
 <h1>Create a Poll</h1>
 <article>
-	<form method="POST">
+	<form method="POST" use:enhance>
 		<label><input type="text" name="Poll Title" placeholder="Poll Title" required /></label>
 		{#each poll.questions as question, question_index}
 			<footer>
-				<input type="text" name="Q{question_index}" placeholder="Question to be asked" />
+				<input type="text" name="{question_index}.text" placeholder="Question to be asked" />
 				{#each question.options as option, option_index}
 					<input
 						type="text"
-						name="Q{question_index} O{option_index}"
+						name="{question_index}-{option_index}"
 						placeholder="Candidate Name or Option"
 					/>
 				{/each}

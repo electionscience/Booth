@@ -7,7 +7,9 @@ generator client {
 
 datasource db {
   provider = "postgres"
+  // url      = "file:./dev.db"
   url      = env("DATABASE_URL")
+  // shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
 
 model Profile {
@@ -19,7 +21,7 @@ model Profile {
   avatarUrl String?
   updated_at DateTime? @updatedAt
   votes Vote[]
-  elections Election[]
+  polls Poll[]
   @@map("profiles")
 }
 
@@ -46,12 +48,12 @@ model Question {
   id Int @id @default(autoincrement())
   text String
   options Option[]
-  election Election @relation(fields: [electionId], references: [id])
-  electionId Int
+  poll Poll @relation(fields: [pollId], references: [id])
+  pollId Int
   dateCreated DateTime @default(now())
 }
 
-model Election {
+model Poll {
   id Int @id @default(autoincrement())
   title String
   description String?
@@ -61,4 +63,4 @@ model Election {
   dateCreated DateTime @default(now())
 }
 
-// Votes relate options, which relate to questions, which relate to ballots, which relate to elections
+// Votes relate options, which relate to questions, which relate to ballots, which relate to polls
