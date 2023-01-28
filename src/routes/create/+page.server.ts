@@ -1,9 +1,17 @@
 import { error, invalid } from '@sveltejs/kit'
 import { exclude_internal_props } from 'svelte/internal';
-import { getSupabase } from '@supabase/auth-helpers-sveltekit'
 import { PrismaClient } from '@prisma/client';
 import { stringify } from 'querystring';
 import type { Actions } from './$types';
+import type { PageLoad } from "./$types"
+
+export const load: PageLoad = async ({ parent }) => {
+  const { session } = await parent()
+  // if (!session?.user) {
+  //   throw redirect(302, "/")
+  // }
+  return {}
+}
 
 const prisma = new PrismaClient();
 

@@ -1,6 +1,4 @@
 <script>
-  import { supabase } from './supabaseClient';
-
   let loading = true;
   let poll = null;
   async function getPolls() {
