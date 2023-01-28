@@ -16,7 +16,7 @@
 		"autoprefixer": "^10.4.2",
 		"prettier": "^2.5.1",
 		"prettier-plugin-svelte": "^2.5.0",
-		"prisma": "^4.8.1",
+		"prisma": "^4.9.0",
 		"svelte": "^3.44.0",
 		"ts-node": "^10.9.1",
 		"typescript": "^4.9.4"
@@ -26,7 +26,7 @@
 		"@auth/core": "^0.3.0",
 		"@auth/sveltekit": "^0.2.0",
 		"@picocss/pico": "^1.5.6",
-		"@prisma/client": "^4.8.1",
+		"@prisma/client": "^4.9.0",
 		"@supabase/auth-helpers-sveltekit": "^0.8.3",
 		"@supabase/supabase-js": "^2.0.4",
 		"svelte-preprocess": "^5.0.1"

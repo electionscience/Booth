@@ -52,7 +52,7 @@ export const actions: Actions = {
     console.log(session.user.id)
     const response = await prisma.poll.create({
       data: {
-        authorId: session.user.id,
+        authorId: session.user.id.toString(),
         title: poll.title,
         questions: {
           create: poll.questions.map(question => {
@@ -70,7 +70,8 @@ export const actions: Actions = {
         }
       }
     })
-
+    console.log(response)
+    return response
 
     // const vote = await prisma.election.create({
 		// 	data: {
