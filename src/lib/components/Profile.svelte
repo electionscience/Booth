@@ -1,6 +1,6 @@
 <script>
   import { supabase } from './supabaseClient'
-  import { user } from './sessionStore'
+  import { user } from '../../sessionStore'
   import Avatar from './Avatar.svelte'
 
   let loading = true
