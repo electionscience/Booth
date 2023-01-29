@@ -1,0 +1,48 @@
+{
+	"name": "booth",
+	"version": "0.0.1",
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview",
+		"lint": "prettier --check --plugin-search-dir=. .",
+		"format": "prettier --write --plugin-search-dir=. ."
+	},
+	"devDependencies": {
+		"@sveltejs/adapter-auto": "next",
+		"@sveltejs/kit": "1.2.2",
+		"@trunkio/launcher": "^1.2.3",
+		"@types/node": "^18.11.18",
+		"autoprefixer": "^10.4.2",
+		"prettier": "^2.5.1",
+		"prettier-plugin-svelte": "^2.5.0",
+		"svelte": "^3.44.0",
+		"ts-node": "^10.9.1",
+		"typescript": "^4.9.4"
+	},
+	"type": "module",
+	"dependencies": {
+		"@auth/core": "^0.3.0",
+		"@auth/sveltekit": "^0.2.0",
+		"@picocss/pico": "^1.5.6",
+		"@supabase/auth-helpers-sveltekit": "^0.8.3",
+		"@supabase/supabase-js": "^2.0.4",
+		"svelte-preprocess": "^5.0.1"
+	},
+	"description": "Open Source voting platform, by the Center for Election Science.",
+	"main": "playwright.config.js",
+	"directories": {
+		"test": "tests"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/electionscience/Booth.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/electionscience/Booth/issues"
+	},
+	"homepage": "https://github.com/electionscience/Booth#readme"
+}

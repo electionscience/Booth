@@ -1,0 +1,59 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider          = "postgres"
+  url               = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+}
+
+model Profile {
+  id         String    @id @default(uuid())
+  username   String?
+  firstName  String?
+  lastName   String?
+  website    String?
+  avatarUrl  String?
+  updated_at DateTime? @updatedAt
+  polls      Poll[]
+  votes      Vote[]
+}
+
+model Vote {
+  id          String   @id @default(uuid())
+  authorId    String
+  optionId    Int
+  value       Int      @default(1)
+  dateCreated DateTime @default(now())
+  author      Profile  @relation(fields: [authorId], references: [id])
+  option      Option   @relation(fields: [optionId], references: [id])
+}
+
+model Option {
+  id          Int      @id @default(autoincrement())
+  text        String
+  questionId  Int
+  dateCreated DateTime @default(now())
+  question    Question @relation(fields: [questionId], references: [id])
+  votes       Vote[]
+}
+
+model Question {
+  id          Int      @id @default(autoincrement())
+  text        String
+  pollId      Int
+  dateCreated DateTime @default(now())
+  options     Option[]
+  poll        Poll     @relation(fields: [pollId], references: [id])
+}
+
+model Poll {
+  id          Int        @id @default(autoincrement())
+  title       String
+  description String?
+  authorId    String
+  dateCreated DateTime   @default(now())
+  author      Profile    @relation(fields: [authorId], references: [id])
+  questions   Question[]
+}

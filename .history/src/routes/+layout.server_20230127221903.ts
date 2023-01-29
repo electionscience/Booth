@@ -1,0 +1,1 @@
+{#if $page.data.session}

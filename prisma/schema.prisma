@@ -1,66 +1,63 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "postgres"
-  // url      = "file:./dev.db"
-  url      = env("DATABASE_URL")
+  provider          = "postgres"
+  url               = env("DATABASE_URL")
   shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
 
-model User {
-  id String @id @default(uuid())
-  username  String?
-  firstName String?
-  lastName  String?
-  website   String?
-  avatarUrl String?
-  updated_at DateTime? @updatedAt
-  votes Vote[]
-  polls Poll[]
-  @@map("Users")
-}
-
 model Vote {
-  id String @id @default(uuid())
-  author User @relation(fields: [authorId], references: [id])
-  authorId String
-  option Option @relation(fields: [optionId], references: [id])
-  optionId Int
-  value Int @default(1)
+  id          String   @id @default(uuid())
+  authorId    String
+  optionId    Int
+  value       Int      @default(1)
   dateCreated DateTime @default(now())
+  author      auth     @relation(fields: [authorId], references: [id])
+  option      Option   @relation(fields: [optionId], references: [id])
 }
 
 model Option {
-  id Int @id @default(autoincrement())
-  text String
-  votes Vote[]
-  question Question @relation(fields: [questionId], references: [id])
-  questionId Int
+  id          Int      @id @default(autoincrement())
+  text        String
+  questionId  Int
   dateCreated DateTime @default(now())
+  question    Question @relation(fields: [questionId], references: [id])
+  votes       Vote[]
 }
 
 model Question {
-  id Int @id @default(autoincrement())
-  text String
-  options Option[]
-  poll Poll @relation(fields: [pollId], references: [id])
-  pollId Int
+  id          Int      @id @default(autoincrement())
+  text        String
+  pollId      Int
   dateCreated DateTime @default(now())
+  options     Option[]
+  poll        Poll     @relation(fields: [pollId], references: [id])
 }
 
 model Poll {
-  id Int @id @default(autoincrement())
-  title String
+  id          Int        @id @default(autoincrement())
+  title       String
   description String?
-  questions Question[]
-  author User @relation(fields: [authorId], references: [id])
-  authorId String
-  dateCreated DateTime @default(now())
+  authorId    String
+  dateCreated DateTime   @default(now())
+  author      auth       @relation(fields: [authorId], references: [id])
+  questions   Question[]
 }
 
-// Votes relate options, which relate to questions, which relate to ballots, which relate to polls
+model auth {
+  id         String    @id
+  username   String?
+  firstName  String?
+  lastName   String?
+  website    String?
+  avatarUrl  String?
+  updated_at DateTime?
+  polls      Poll[]
+  votes      Vote[]
+}
+
+/// We could not retrieve columns for the underlying table. Either it has none or you are missing rights to see them. Please check your privileges.
+// model profile {
+// }

@@ -1,0 +1,66 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgres"
+  // url      = "file:./dev.db"
+  url      = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+}
+
+model profile {
+  id String @id @default(uuid())
+  username  String?
+  firstName String?
+  lastName  String?
+  website   String?
+  avatarUrl String?
+  updated_at DateTime? @updatedAt
+  votes Vote[]
+  polls Poll[]
+  @@map("Users")
+}
+
+model Vote {
+  id String @id @default(uuid())
+  author profile @relation(fields: [authorId], references: [id])
+  authorId String
+  option Option @relation(fields: [optionId], references: [id])
+  optionId Int
+  value Int @default(1)
+  dateCreated DateTime @default(now())
+}
+
+model Option {
+  id Int @id @default(autoincrement())
+  text String
+  votes Vote[]
+  question Question @relation(fields: [questionId], references: [id])
+  questionId Int
+  dateCreated DateTime @default(now())
+}
+
+model Question {
+  id Int @id @default(autoincrement())
+  text String
+  options Option[]
+  poll Poll @relation(fields: [pollId], references: [id])
+  pollId Int
+  dateCreated DateTime @default(now())
+}
+
+model Poll {
+  id Int @id @default(autoincrement())
+  title String
+  description String?
+  questions Question[]
+  author User @relation(fields: [authorId], references: [id])
+  authorId String
+  dateCreated DateTime @default(now())
+}
+
+// Votes relate options, which relate to questions, which relate to ballots, which relate to polls
